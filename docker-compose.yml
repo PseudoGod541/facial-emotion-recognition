@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # The FastAPI Backend Service
+  api:
+    build: .
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    volumes:
+      # Mount the models and the OpenCV cascade file
+      - ./models:/app/models
+      - ./haarcascade_frontalface_default.xml:/app/haarcascade_frontalface_default.xml
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  # The Streamlit Frontend Service
+  frontend:
+    build: .
+    command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api  # Ensures the backend starts before the frontend
+    restart: unless-stopped

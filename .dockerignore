@@ -1,0 +1,16 @@
+# .dockerignore
+
+# Ignore the huge dataset folder
+fer2013/
+
+# Ignore Python virtual environment
+.venv/
+
+# Ignore VS Code settings and Python cache
+.vscode/
+__pycache__/
+*.pyc
+
+# Ignore Git files
+.git/
+.gitignore

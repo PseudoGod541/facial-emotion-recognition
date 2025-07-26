@@ -1,0 +1,19 @@
+# requirements.txt
+
+# --- Core ML & CV Libraries ---
+# Use the exact version you trained your model with to avoid errors
+tensorflow==2.18.0
+opencv-python-headless
+
+# --- FastAPI Backend ---
+fastapi
+uvicorn
+python-multipart
+Pillow
+
+# --- Streamlit Frontend ---
+streamlit
+requests
+
+# --- General Utility ---
+numpy
